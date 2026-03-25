@@ -90,7 +90,14 @@ The best option would be label-with-dashes (#4) because it is a valid and easy t
 You have the following code chunk:
 
 ```{r}
-#| eval: false
+# #| eval: false
+# #| eval: true
+
+# #| echo: false
+# #| echo: true
+
+# #| warning: false
+# #| warning: true
     
 ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
   geom_point()
@@ -101,6 +108,23 @@ Add the following code chunk options, one at a time, and set each to `false` and
 -   `echo`
 -   `warning`
 -   `eval`
+
+Answer:  
+1) eval controls whether the code is executed or not.    
+eval: false - This option does not run the code. 
+eval: true - This option runs the code. 
+
+2) echo controls whether the code is shown in the input.  
+echo: false: This option does not show the code. 
+echo: true: This option shows the code. 
+
+3) warning controls if a warning message displays. 
+warning: false: This option does not show the warnings. 
+warning: true: This option hides the warnings. 
+  
+  
+The most important setting for this chunk would be to set echo=false, warning=false, and eval=true.  
+This would make it so the plot would display without showing the code or warning messages.  
 
 ## Question 3
 
