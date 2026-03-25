@@ -295,9 +295,37 @@ In a single pipeline, calculate the mean of `x`, mean of `y`, standard deviation
 There are 13 groups but `tibble`s only print out 10 rows by default. Add `print(n = 13)` as the last step of your pipeline to display all rows.
 :::
 
+```{r}
+datasaurus_dozen |>
+  group_by(dataset) |>
+  summarise(
+    mean_x = mean(x),
+    mean_y = mean(y),
+    sd_x = sd(x),
+    sd_y = sd(y),
+    corr = cor(x,y)
+  ) |>
+  print(n = 13)
+```
+
+Answer:  
+The summary statistics are nearly identical across the 13 data sets with the same means and standard deviations but with slightly different correlations. This suggest that the datasets are similar numerically but could differ visually. 
+
 ## Question 7
 
 Create a scatterplot of `y` versus `x` and color and facet it by `dataset`. Then, in 1-2 sentences, how these plots compare across groups (datasets). How does your response in this question compare to your response to the previous question and what does this say about using visualizations and summary statistics when getting to know a dataset?
+
+```{r}
+ggplot(
+  datasaurus_dozen, aes(x=x, y=y, color = dataset)) +
+    geom_point(show.legend = FALSE) +
+    facet_wrap(~dataset)
+
+```
+
+Answer:  
+The scatter plots show that each data set has a different pattern and shape, despite having nearly identical statistics as seen in question 6. Compared to to question 6, this shows that the statistics such as mean and SD alone can be misleading, and that visualizations are critical for understanding the true structure of the data.  
+
 
 ::: callout-tip
 When you both color and facet by the same variable, you'll end up with a redundant legend. Turn off the legend by adding `show.legend = FALSE` to the geom creating the legend.

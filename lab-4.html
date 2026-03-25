@@ -447,10 +447,57 @@ Tip
 <p>There are 13 groups but <code>tibble</code>s only print out 10 rows by default. Add <code>print(n = 13)</code> as the last step of your pipeline to display all rows.</p>
 </div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dataset) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_x =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_y =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_x =</span> <span class="fu">sd</span>(x),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_y =</span> <span class="fu">sd</span>(y),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">corr =</span> <span class="fu">cor</span>(x,y)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">13</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 6
+   dataset    mean_x mean_y  sd_x  sd_y    corr
+   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+ 1 away         54.3   47.8  16.8  26.9 -0.0641
+ 2 bullseye     54.3   47.8  16.8  26.9 -0.0686
+ 3 circle       54.3   47.8  16.8  26.9 -0.0683
+ 4 dino         54.3   47.8  16.8  26.9 -0.0645
+ 5 dots         54.3   47.8  16.8  26.9 -0.0603
+ 6 h_lines      54.3   47.8  16.8  26.9 -0.0617
+ 7 high_lines   54.3   47.8  16.8  26.9 -0.0685
+ 8 slant_down   54.3   47.8  16.8  26.9 -0.0690
+ 9 slant_up     54.3   47.8  16.8  26.9 -0.0686
+10 star         54.3   47.8  16.8  26.9 -0.0630
+11 v_lines      54.3   47.8  16.8  26.9 -0.0694
+12 wide_lines   54.3   47.8  16.8  26.9 -0.0666
+13 x_shape      54.3   47.8  16.8  26.9 -0.0656</code></pre>
+</div>
+</div>
+<p>Answer:<br>
+The summary statistics are nearly identical across the 13 data sets with the same means and standard deviations but with slightly different correlations. This suggest that the datasets are similar numerically but could differ visually.</p>
 </section>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <p>Create a scatterplot of <code>y</code> versus <code>x</code> and color and facet it by <code>dataset</code>. Then, in 1-2 sentences, how these plots compare across groups (datasets). How does your response in this question compare to your response to the previous question and what does this say about using visualizations and summary statistics when getting to know a dataset?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  datasaurus_dozen, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">color =</span> dataset)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-4_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Answer:<br>
+The scatter plots show that each data set has a different pattern and shape, despite having nearly identical statistics as seen in question 6. Compared to to question 6, this shows that the statistics such as mean and SD alone can be misleading, and that visualizations are critical for understanding the true structure of the data.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
