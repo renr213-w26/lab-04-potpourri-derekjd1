@@ -51,8 +51,39 @@ a.  Add each of strings below to the code chunk provided in your document, rende
     ::: callout-tip
     Try each label option in the code chunk provided in your document. If it gives you an error (document doesn't render), you know it's not a proper chunk label.
     :::
+    
+Testing code chunks:
+Chunk 1:
+```{r}
+# #| label: a-label 
+# #| with-a-line-break
+```
+Chunk label 1 is not a proper code chunk because it is split across 2 lines. Chunk labeling is a single line.
+To fix this make the label a single line.
+
+Chunk 2:
+```{r}
+# #| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel
+```
+Chunk 2 is technically valid - but would be improper because it is hard to read.
+To fix this make the label shorter and easier to read / interpret.
+
+Chunk 3:
+```{r}
+# #| label: label with spaces
+```
+Chunk 3 is not a proper code chunk because the label contains spaces and labels can not contain spaces.
+To fix this change the spaces to dashes.
+
+Chunk 4:
+```{r}
+# #| label: label-with-dashes
+```
+This option is valid because it uses one line, easy to read, no spaces, and uses dashes.
 
 b.  Which of the chunk label options above is the best option? Explain your reasoning in 1-2 sentences.
+
+The best option would be label-with-dashes (#4) because it is a valid and easy to read label. It follows the proper code chunk syntax by avoiding spaces and line breaks while still describing the chunk. 
 
 ## Question 2
 
