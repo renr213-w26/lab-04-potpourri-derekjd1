@@ -157,12 +157,13 @@ Tip
 </div>
 </div></li>
 </ol>
-<p>Testing code chunks: Chunk 1:</p>
+<p>Answer:<br>
+Testing code chunks: Chunk 1:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| label: a-label </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #| with-a-line-break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Chunk label 1 is not a proper code chunk because it is split across 2 lines. Chunk labeling is a single line. To fix this make the label a single line.</p>
+<p>Chunk label 1 is not a proper code chunk because it is split across 2 lines. Chunk labeling should be in a single line. To fix this make the label a single line.</p>
 <p>Chunk 2:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -181,7 +182,8 @@ Tip
 <ol start="2" type="a">
 <li>Which of the chunk label options above is the best option? Explain your reasoning in 1-2 sentences.</li>
 </ol>
-<p>The best option would be label-with-dashes (#4) because it is a valid and easy to read label. It follows the proper code chunk syntax by avoiding spaces and line breaks while still describing the chunk.</p>
+<p>Answer:<br>
+The best option would be label-with-dashes (#4) because it is a valid and easy to read label. It follows the proper code chunk syntax by avoiding spaces and line breaks while still describing the chunk.</p>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
@@ -237,7 +239,8 @@ This would make it so the plot would display without showing the code or warning
 </div>
 <p>Add <code>fig-width</code> and <code>fig-asp</code> as code chunk options. Try setting <code>fig-width</code> to values between 1 and 10. Try setting <code>fig-asp</code> to values between 0.1 and 1. Re-render the document after each value and observe its effect. Ultimately, choose values that make the plot look visually pleasing in the rendered document. Based on the behavior you observe, describe what each chunk option does.</p></li>
 </ol>
-<p>Answer: fig-width controls the width of the plot in the rendered document. Increasing the value makes the plot wider, while decreasing the value makes the plot narrower.</p>
+<p>Answer:<br>
+fig-width controls the width of the plot in the rendered document. Increasing the value makes the plot wider, while decreasing the value makes the plot narrower.</p>
 <p>fig-asp controls the aspect ratio of the plot(height relative to width). Larger values make the plot taller, while smaller values make the plot shorter.</p>
 <p>The values I chose produce a plot that is visually balanced and easy to read.</p>
 <ol start="2" type="a">
@@ -248,7 +251,8 @@ This would make it so the plot would display without showing the code or warning
 </div>
 <p>Add <code>error</code> as a code chunk option and set it to <code>false</code> and then set it to <code>true</code>. After each value, render your document and observe its effect. Ultimately, choose the value that allows you to render your document without altering the code. Based on the behavior you observe, describe what this code chunk option does.</p></li>
 </ol>
-<p>Answer: The error option controls if the errors stop the document from rendering. When set to false, the document will stop rendering if an error occurs. When set to true, the error is displayed but the document continues to render. I would set error=true becuase it allows the document to render without modifying the code even if there is an error.</p>
+<p>Answer:<br>
+The error option controls if the errors stop the document from rendering. When set to false, the document will stop rendering if an error occurs. When set to true, the error is displayed but the document continues to render. I would set error=true becuase it allows the document to render without modifying the code even if there is an error.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -287,8 +291,8 @@ Tip
 </ol>
 <p>The data set should have on observation from each combination of service and response category.<br>
 The variable should include:<br>
-Service, Response, and Percentage.</p>
-<p>The data set would have 12 observations, since there are 4 services and 3 response categories for each service.</p>
+Service, Response, and Percentage.<br>
+The data set would have 12 observations, since there are 4 services and 3 response categories for each service.</p>
 <ol start="3" type="a">
 <li>Load the data for this survey from <code>data/survation.csv</code>. Confirm that the data match the percentages from the visualization. That is, calculate the percentages of public sector, private sector, don’t know for each of the services and check that they match the percentages from the plot.</li>
 </ol>
@@ -347,8 +351,8 @@ Since the provided data set was missing, I recreated a tibble using the percenta
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Improved Graph:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> service, <span class="at">fill =</span> response)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  data, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> service, <span class="at">fill =</span> response)) <span class="sc">+</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray"</span>, <span class="st">"#FF3205"</span>, <span class="st">"#006697"</span>)) <span class="sc">+</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
@@ -478,7 +482,7 @@ Tip
 </div>
 </div>
 <p>Answer:<br>
-The summary statistics are nearly identical across the 13 data sets with the same means and standard deviations but with slightly different correlations. This suggest that the datasets are similar numerically but could differ visually.</p>
+The summary statistics are nearly identical across the 13 data sets with the same means and standard deviations for both the x and y values, but with slightly different correlations (corr) . This suggest that the data sets are similar numerically but could differ visually.</p>
 </section>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
